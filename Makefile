@@ -6,7 +6,7 @@
 #    By: tschmidt <tschmidt@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/13 16:55:01 by tschmidt          #+#    #+#              #
-#    Updated: 2021/12/13 12:22:11 by tschmidt         ###   ########.fr        #
+#    Updated: 2021/12/16 10:35:26 by tschmidt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,9 +32,9 @@ OBJ = ${SRC:.c=.o}
 OBJB = ${SRCB:.c=.o}
 
 ifdef WITH_BONUS
-OBJ_FILES = $(OBJ) $(OBJB)
+	OBJ_FILES = $(OBJ) $(OBJB)
 else
-OBJ_FILES = $(OBJ)
+	OBJ_FILES = $(OBJ) 
 endif
 
 
@@ -42,9 +42,6 @@ all: $(NAME)
 
 $(NAME): $(OBJ_FILES)
 	ar -crs $(NAME) $(OBJ_FILES)
-
-$(OBJ):
-	$(CC) $(CFLAGS) $(SRC)
 
 clean:
 	-/bin/rm -f $(OBJ) $(OBJB)
@@ -59,4 +56,4 @@ re: fclean all
 bonus:
 	$(MAKE) WITH_BONUS=1 all
 
-.PHONY: all objects clean fclean re bonus objectsb
+.PHONY: all clean fclean re bonus
